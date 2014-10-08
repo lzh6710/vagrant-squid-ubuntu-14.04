@@ -30,6 +30,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "ubuntu/trusty32"
 
   config.vm.network "private_network", ip: "192.168.56.250"
+
+  config.vm.network :forwarded_port, guest: 22, host: 2200, id:'ssh', auto_correct:true
   
   config.vm.provision "shell", inline: $setup
 end
